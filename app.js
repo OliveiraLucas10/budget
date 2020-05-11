@@ -220,6 +220,14 @@ const controller = (function (budgetCtrl, UICtrl) {
     UIController.displayBudget(budget);
   };
 
+  const updatePercentages = () => {
+    // 1. calculate percentages
+
+    // 2. read percentages from the budget controller
+
+    // 3. update the UI with new percentages
+  };
+
   const ctrlAddItem = () => {
     // TODO
     // 1 get the field input data
@@ -234,10 +242,15 @@ const controller = (function (budgetCtrl, UICtrl) {
       );
       // 3 add te item to UI
       UICtrl.addListItem(newItem, input.type);
+
       // 4 clear the fields
       UICtrl.clearFields();
+
       // 5 calculate and update budget
       updateBudget();
+
+      // 6 calculate and update percentages
+      updatePercentages();
     }
   };
 
@@ -260,11 +273,10 @@ const controller = (function (budgetCtrl, UICtrl) {
 
       // 3. update and show the new budget
       updateBudget();
+
+      // 4 calculate and update percentages
+      updatePercentages();
     }
-
-
-
-
   };
 
   return {
