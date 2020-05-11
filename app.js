@@ -151,6 +151,13 @@ const UIController = (function () {
       // insert the html into the dom
       document.querySelector(element).insertAdjacentHTML("beforeend", newHtml);
     },
+
+    deleteListItem: function (selectorID) {
+      let el = document.getElementById(selectorID);
+      el.parentNode.removeChild(el);
+    },
+
+
     clearFields: function () {
       const fields = document.querySelectorAll(
         DOMStrings.inputDescription + ", " + DOMStrings.inputValue
@@ -238,7 +245,6 @@ const controller = (function (budgetCtrl, UICtrl) {
     let itemID, splitID, type, ID;
 
     itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
-    console.log(itemID);
 
     if (itemID) {
       // inc-1
@@ -250,8 +256,10 @@ const controller = (function (budgetCtrl, UICtrl) {
       budgetController.deleteItem(type, ID);
 
       // 2. delete the item from the UI
+      UIController.deleteListItem(itemID);
 
       // 3. update and show the new budget
+      updateBudget();
     }
 
 
